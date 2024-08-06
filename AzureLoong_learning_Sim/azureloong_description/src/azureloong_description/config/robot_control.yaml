@@ -1,0 +1,164 @@
+azureloong_gazebo:
+    # Publish all joint states -----------------------------------
+    joint_state_controller:
+        type: joint_state_controller/JointStateController
+        publish_rate: 1000  
+
+    # head Controllers ---------------------------------------
+    J_head_yaw:
+        type: unitree_legged_control/UnitreeJointController
+        joint: J_head_yaw
+        pid: {p: 100.0, i: 0.0, d: 5.0}
+    
+    J_head_pitch:
+        type: unitree_legged_control/UnitreeJointController
+        joint: J_head_pitch
+        pid: {p: 100.0, i: 0.0, d: 5.0}
+
+    # arm Controllers ---------------------------------------
+    J_arm_r_01:
+        type: unitree_legged_control/UnitreeJointController
+        joint: J_arm_r_01
+        pid: {p: 100.0, i: 0.0, d: 5.0}
+
+    J_arm_r_02:
+        type: unitree_legged_control/UnitreeJointController
+        joint: J_arm_r_02
+        pid: {p: 100.0, i: 0.0, d: 5.0}
+    
+    J_arm_r_03:
+        type: unitree_legged_control/UnitreeJointController
+        joint: J_arm_r_03
+        pid: {p: 100.0, i: 0.0, d: 5.0}
+
+    J_arm_r_04:
+        type: unitree_legged_control/UnitreeJointController
+        joint: J_arm_r_04
+        pid: {p: 100.0, i: 0.0, d: 5.0}
+    
+    J_arm_r_05:
+        type: unitree_legged_control/UnitreeJointController
+        joint: J_arm_r_05
+        pid: {p: 100.0, i: 0.0, d: 5.0}
+
+    J_arm_r_06:
+        type: unitree_legged_control/UnitreeJointController
+        joint: J_arm_r_06
+        pid: {p: 100.0, i: 0.0, d: 5.0}
+
+    J_arm_r_07:
+        type: unitree_legged_control/UnitreeJointController
+        joint: J_arm_r_07
+        pid: {p: 100.0, i: 0.0, d: 5.0}
+    
+    J_arm_l_01:
+        type: unitree_legged_control/UnitreeJointController
+        joint: J_arm_l_01
+        pid: {p: 100.0, i: 0.0, d: 5.0}
+
+    J_arm_l_02:
+        type: unitree_legged_control/UnitreeJointController
+        joint: J_arm_l_02
+        pid: {p: 100.0, i: 0.0, d: 5.0}
+    
+    J_arm_l_03:
+        type: unitree_legged_control/UnitreeJointController
+        joint: J_arm_l_03
+        pid: {p: 100.0, i: 0.0, d: 5.0}
+
+    J_arm_l_04:
+        type: unitree_legged_control/UnitreeJointController
+        joint: J_arm_l_04
+        pid: {p: 100.0, i: 0.0, d: 5.0}
+    
+    J_arm_l_05:
+        type: unitree_legged_control/UnitreeJointController
+        joint: J_arm_l_05
+        pid: {p: 100.0, i: 0.0, d: 5.0}
+
+    J_arm_l_06:
+        type: unitree_legged_control/UnitreeJointController
+        joint: J_arm_l_06
+        pid: {p: 100.0, i: 0.0, d: 5.0}
+
+    J_arm_l_07:
+        type: unitree_legged_control/UnitreeJointController
+        joint: J_arm_l_07
+        pid: {p: 100.0, i: 0.0, d: 5.0}
+    
+    # waist Controllers ---------------------------------------
+    J_waist_pitch:
+        type: unitree_legged_control/UnitreeJointController
+        joint: J_waist_pitch
+        pid: {p: 100.0, i: 0.0, d: 5.0}
+        
+    J_waist_roll:
+        type: unitree_legged_control/UnitreeJointController
+        joint: J_waist_roll
+        pid: {p: 100.0, i: 0.0, d: 5.0}  
+        
+    J_waist_yaw:
+        type: unitree_legged_control/UnitreeJointController
+        joint: J_waist_yaw
+        pid: {p: 100.0, i: 0.0, d: 5.0}  
+          
+    # leg Controllers ---------------------------------------        
+    J_hip_r_roll:
+        type: unitree_legged_control/UnitreeJointController
+        joint: J_hip_r_roll
+        pid: {p: 100.0, i: 0.0, d: 5.0}
+
+    J_hip_r_yaw:
+        type: unitree_legged_control/UnitreeJointController
+        joint: J_hip_r_yaw
+        pid: {p: 100.0, i: 0.0, d: 5.0}
+    
+    J_hip_r_pitch:
+        type: unitree_legged_control/UnitreeJointController
+        joint: J_hip_r_pitch
+        pid: {p: 100.0, i: 0.0, d: 5.0}
+
+    J_knee_r_pitch:
+        type: unitree_legged_control/UnitreeJointController
+        joint: J_knee_r_pitch
+        pid: {p: 100.0, i: 0.0, d: 5.0}
+    
+    J_ankle_r_pitch:
+        type: unitree_legged_control/UnitreeJointController
+        joint: J_ankle_r_pitch
+        pid: {p: 100.0, i: 0.0, d: 5.0}
+
+    J_ankle_r_roll:
+        type: unitree_legged_control/UnitreeJointController
+        joint: J_ankle_r_roll
+        pid: {p: 100.0, i: 0.0, d: 5.0}
+
+    J_hip_l_roll:
+        type: unitree_legged_control/UnitreeJointController
+        joint: J_hip_l_roll
+        pid: {p: 100.0, i: 0.0, d: 5.0}
+
+    J_hip_l_yaw:
+        type: unitree_legged_control/UnitreeJointController
+        joint: J_hip_l_yaw
+        pid: {p: 100.0, i: 0.0, d: 5.0}
+    
+    J_hip_l_pitch:
+        type: unitree_legged_control/UnitreeJointController
+        joint: J_hip_l_pitch
+        pid: {p: 100.0, i: 0.0, d: 5.0}
+
+    J_knee_l_pitch:
+        type: unitree_legged_control/UnitreeJointController
+        joint: J_knee_l_pitch
+        pid: {p: 100.0, i: 0.0, d: 5.0}
+    
+    J_ankle_l_pitch:
+        type: unitree_legged_control/UnitreeJointController
+        joint: J_ankle_l_pitch
+        pid: {p: 100.0, i: 0.0, d: 5.0}
+
+    J_ankle_l_roll:
+        type: unitree_legged_control/UnitreeJointController
+        joint: J_ankle_l_roll
+        pid: {p: 100.0, i: 0.0, d: 5.0}
