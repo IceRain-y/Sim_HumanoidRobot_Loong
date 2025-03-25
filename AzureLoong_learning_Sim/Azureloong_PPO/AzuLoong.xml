@@ -1,0 +1,300 @@
+<mujoco model="OpenLoog">
+  <default>
+    <joint limited="true" damping="0.01" armature="0.01" frictionloss="0.01" />
+    <geom condim="4" contype="1" conaffinity="15" friction="0.9 0.2 0.2" solref="0.001 2" />
+    <motor ctrllimited="true" />
+    <equality solref="0.001 2" />
+    <default class="visualgeom">
+      <geom material="visualgeom" condim="1" contype="0" conaffinity="0" />
+    </default>
+  </default>
+
+  <compiler angle="radian" meshdir="meshes" eulerseq="zyx" autolimits="true" />
+
+  <asset>
+    <texture name="texplane" type="2d" builtin="checker" rgb1=".0 .0 .0" rgb2=".8 .8 .8" width="100" height="100" />
+    <material name="matplane" reflectance="0." texture="texplane" texrepeat="1 1" texuniform="true" />
+    <!-- <material name="" rgba="0.89804 0.91765 0.92941 1" /> -->
+    <!-- 修正后 -->
+    <material name="default_visual_material" rgba="0.89804 0.91765 0.92941 1" />  
+    <material name="default_material" rgba="0.7 0.7 0.7 1" />
+    <mesh name="base_link.STL" file="base_link.STL" />
+    <mesh name="Link_head_yaw.STL" file="Link_head_yaw.STL" />
+    <mesh name="Link_head_pitch.STL" file="Link_head_pitch.STL" />
+    <mesh name="Link_arm_r_01.STL" file="Link_arm_r_01.STL" />
+    <mesh name="Link_arm_r_02.STL" file="Link_arm_r_02.STL" />
+    <mesh name="Link_arm_r_03.STL" file="Link_arm_r_03.STL" />
+    <mesh name="Link_arm_r_04.STL" file="Link_arm_r_04.STL" />
+    <mesh name="Link_arm_r_05.STL" file="Link_arm_r_05.STL" />
+    <mesh name="Link_arm_r_06.STL" file="Link_arm_r_06.STL" />
+    <mesh name="Link_arm_r_07.STL" file="Link_arm_r_07.STL" />
+    <mesh name="Link_arm_l_01.STL" file="Link_arm_l_01.STL" />
+    <mesh name="Link_arm_l_02.STL" file="Link_arm_l_02.STL" />
+    <mesh name="Link_arm_l_03.STL" file="Link_arm_l_03.STL" />
+    <mesh name="Link_arm_l_04.STL" file="Link_arm_l_04.STL" />
+    <mesh name="Link_arm_l_05.STL" file="Link_arm_l_05.STL" />
+    <mesh name="Link_arm_l_06.STL" file="Link_arm_l_06.STL" />
+    <mesh name="Link_arm_l_07.STL" file="Link_arm_l_07.STL" />
+    <mesh name="Link_waist_pitch.STL" file="Link_waist_pitch.STL" />
+    <mesh name="Link_waist_roll.STL" file="Link_waist_roll.STL" />
+    <mesh name="Link_waist_yaw.STL" file="Link_waist_yaw.STL" />
+    <mesh name="Link_hip_r_roll.STL" file="Link_hip_r_roll.STL" />
+    <mesh name="Link_hip_r_yaw.STL" file="Link_hip_r_yaw.STL" />
+    <mesh name="Link_hip_r_pitch.STL" file="Link_hip_r_pitch.STL" />
+    <mesh name="Link_knee_r_pitch.STL" file="Link_knee_r_pitch.STL" />
+    <mesh name="Link_ankle_r_pitch.STL" file="Link_ankle_r_pitch.STL" />
+    <mesh name="Link_ankle_r_roll.STL" file="Link_ankle_r_roll.STL" />
+    <mesh name="Link_hip_l_roll.STL" file="Link_hip_l_roll.STL" />
+    <mesh name="Link_hip_l_yaw.STL" file="Link_hip_l_yaw.STL" />
+    <mesh name="Link_hip_l_pitch.STL" file="Link_hip_l_pitch.STL" />
+    <mesh name="Link_knee_l_pitch.STL" file="Link_knee_l_pitch.STL" />
+    <mesh name="Link_ankle_l_pitch.STL" file="Link_ankle_l_pitch.STL" />
+    <mesh name="Link_ankle_l_roll.STL" file="Link_ankle_l_roll.STL" />
+  </asset>
+
+  <worldbody>
+    <light directional="true" diffuse="0.4 0.4 0.4" specular="0.1 0.1 0.1" pos="0 0 5.0" dir="0 0 -1" castshadow="false" />
+    <light directional="true" diffuse="0.6 0.6 0.6" specular="0.2 0.2 0.2" pos="0 0 4" dir="0 0 -1" />
+    <geom name="ground" type="plane" pos="0 0 0" size="10 10 0.001" quat="1 0 0 0" material="matplane" condim="3" conaffinity="15" />
+    <body name="root" pos="0 0 1.1395000000000002" quat="1 0 0 0">
+      <freejoint name="root" />
+      <site name="root_site" pos="0 0 0" quat="1 0 0 0" />
+      <body name="base" pos="0 0 0" quat="1 0 0 0">
+        <geom name="base_visual_0" pos="0 0 0" quat="1.0 0.0 0.0 0.0" material="default_material" type="box" size="0.0005 0.0005 0.0005" />
+        <body name="base_link" pos="0 0 0" quat="1.0 0.0 0.0 0.0">
+          <inertial pos="-0.0056641 -0.0013367 0.23829" quat="1.0 0.0 0.0 0.0" mass="22.447" diaginertia="0.3742 0.27691 0.22104" />
+          <geom name="base_link_collision_0" pos="0 0 0" quat="1.0 0.0 0.0 0.0" type="mesh" mesh="base_link.STL" rgba="0 0 0 0" />
+          <geom name="base_link_visual_0" pos="0 0 0" quat="1.0 0.0 0.0 0.0" material="" type="mesh" mesh="base_link.STL" />
+          <body name="Link_head_yaw" pos="0.009 0 0.4064" quat="1.0 0.0 0.0 0.0">
+            <joint name="J_head_yaw" type="hinge" range="-1.5708 1.5708" axis="0 0 1" />
+            <inertial pos="4.6974E-12 -0.0020814 0.044801" quat="1.0 0.0 0.0 0.0" mass="0.84249" diaginertia="0.000629 0.0007003 0.0005541" />
+            <geom name="Link_head_yaw_collision_0" pos="0 0 0" quat="1.0 0.0 0.0 0.0" type="mesh" mesh="Link_head_yaw.STL" rgba="0 0 0 0" />
+            <geom name="Link_head_yaw_visual_0" pos="0 0 0" quat="1.0 0.0 0.0 0.0" material="" type="mesh" mesh="Link_head_yaw.STL" />
+            <body name="Link_head_pitch" pos="0 -0.0345999999999997 0.0484999999999999" quat="1.0 0.0 0.0 0.0">
+              <joint name="J_head_pitch" type="hinge" range="-0.7854 0.7854" axis="0 -1 0" />
+              <inertial pos="0.020569 0.033004 0.125" quat="1.0 0.0 0.0 0.0" mass="1.3943" diaginertia="0.0060059 0.00629 0.0048569" />
+              <geom name="Link_head_pitch_collision_0" pos="0 0 0" quat="1.0 0.0 0.0 0.0" type="mesh" mesh="Link_head_pitch.STL" rgba="0 0 0 0" />
+              <geom name="Link_head_pitch_visual_0" pos="0 0 0" quat="1.0 0.0 0.0 0.0" material="" type="mesh" mesh="Link_head_pitch.STL" />
+            </body>
+          </body>
+          <body name="Link_arm_r_01" pos="0.004 -0.1616 0.3922" quat="1.0 0.0 0.0 0.0">
+            <joint name="J_arm_r_01" type="hinge" range="-2.96706 2.96706" axis="0 -1 0" />
+            <inertial pos="0.0044946 -0.038294 -1.8744E-06" quat="1.0 0.0 0.0 0.0" mass="0.75641" diaginertia="0.00058712 0.00080305 0.00084299" />
+            <geom name="Link_arm_r_01_collision_0" pos="0 0 0" quat="1.0 0.0 0.0 0.0" type="mesh" mesh="Link_arm_r_01.STL" rgba="0 0 0 0" />
+            <geom name="Link_arm_r_01_visual_0" pos="0 0 0" quat="1.0 0.0 0.0 0.0" material="" type="mesh" mesh="Link_arm_r_01.STL" />
+            <body name="Link_arm_r_02" pos="-0.042 -0.041 0" quat="1.0 0.0 0.0 0.0">
+              <joint name="J_arm_r_02" type="hinge" range="-1.83260 1.83260" axis="-1 0 0" />
+              <inertial pos="0.042 -0.0674307499121858 -6.93889390390723E-18" quat="1.0 0.0 0.0 0.0" mass="0.984999996273518" diaginertia="0.0017309882399251 0.00115401958000568 0.00226269324370836" />
+              <geom name="Link_arm_r_02_collision_0" pos="0 0 0" quat="1.0 0.0 0.0 0.0" type="mesh" mesh="Link_arm_r_02.STL" rgba="0 0 0 0" />
+              <geom name="Link_arm_r_02_visual_0" pos="0 0 0" quat="1.0 0.0 0.0 0.0" material="" type="mesh" mesh="Link_arm_r_02.STL" />
+              <body name="Link_arm_r_03" pos="0.042 -0.1226 0" quat="1.0 0.0 0.0 0.0">
+                <joint name="J_arm_r_03" type="hinge" range="-2.96706 2.96706" axis="0 -1 0" />
+                <inertial pos="-0.00141357502419955 -0.164662742175383 0.0207578924800774" quat="1.0 0.0 0.0 0.0" mass="0.958999855228924" diaginertia="0.00206438134078715 0.00080535412926664 0.00205099914609259" />
+                <geom name="Link_arm_r_03_collision_0" pos="0 0 0" quat="1.0 0.0 0.0 0.0" type="mesh" mesh="Link_arm_r_03.STL" rgba="0 0 0 0" />
+                <geom name="Link_arm_r_03_visual_0" pos="0 0 0" quat="1.0 0.0 0.0 0.0" material="" type="mesh" mesh="Link_arm_r_03.STL" />
+                <body name="Link_arm_r_04" pos="0.0353 -0.1774 0.024" quat="1.0 0.0 0.0 0.0">
+                  <joint name="J_arm_r_04" type="hinge" range="0 2.96706" axis="-1 0 0" />
+                  <inertial pos="-0.038727 -0.060767 -0.021003" quat="1.0 0.0 0.0 0.0" mass="0.6" diaginertia="0.00070398 0.00068085 0.0010653" />
+                  <geom name="Link_arm_r_04_collision_0" pos="0 0 0" quat="1.0 0.0 0.0 0.0" type="mesh" mesh="Link_arm_r_04.STL" rgba="0 0 0 0" />
+                  <geom name="Link_arm_r_04_visual_0" pos="0 0 0" quat="1.0 0.0 0.0 0.0" material="" type="mesh" mesh="Link_arm_r_04.STL" />
+                  <body name="Link_arm_r_05" pos="-0.0353 -0.1035 -0.024" quat="1.0 0.0 0.0 0.0">
+                    <joint name="J_arm_r_05" type="hinge" range="-2.96706 2.96706" axis="0 -1 0" />
+                    <inertial pos="3.2712E-05 -0.068658 -0.00011178" quat="1.0 0.0 0.0 0.0" mass="0.68976" diaginertia="0.0025225 0.0004487 0.0024111" />
+                    <geom name="Link_arm_r_05_collision_0" pos="0 0 0" quat="1.0 0.0 0.0 0.0" type="mesh" mesh="Link_arm_r_05.STL" rgba="0 0 0 0" />
+                    <geom name="Link_arm_r_05_visual_0" pos="0 0 0" quat="1.0 0.0 0.0 0.0" material="" type="mesh" mesh="Link_arm_r_05.STL" />
+                    <body name="Link_arm_r_06" pos="-0.0265 -0.1965 0" quat="1.0 0.0 0.0 0.0">
+                      <joint name="J_arm_r_06" type="hinge" range="-1.8326 1.8326" axis="1 0 0" />
+                      <inertial pos="0.026078 -8.9588E-07 0.0016637" quat="1.0 0.0 0.0 0.0" mass="0.28" diaginertia="0.0001456 0.00015693 0.00010498" />
+                      <geom name="Link_arm_r_06_collision_0" pos="0 0 0" quat="1.0 0.0 0.0 0.0" type="mesh" mesh="Link_arm_r_06.STL" rgba="0 0 0 0" />
+                      <geom name="Link_arm_r_06_visual_0" pos="0 0 0" quat="1.0 0.0 0.0 0.0" material="" type="mesh" mesh="Link_arm_r_06.STL" />
+                      <body name="Link_arm_r_07" pos="0.0265 0 0.0318" quat="1.0 0.0 0.0 0.0">
+                        <joint name="J_arm_r_07" type="hinge" range="-1.04720 1.04720" axis="0 0 1" />
+                        <inertial pos="-0.007859 -0.15817 -0.027736" quat="1.0 0.0 0.0 0.0" mass="0.61354" diaginertia="0.0025969 0.0007306 0.0030104" />
+                        <geom name="Link_arm_r_07_collision_0" pos="0 0 0" quat="1.0 0.0 0.0 0.0" type="mesh" mesh="Link_arm_r_07.STL" rgba="0 0 0 0" />
+                        <geom name="Link_arm_r_07_visual_0" pos="0 0 0" quat="1.0 0.0 0.0 0.0" material="" type="mesh" mesh="Link_arm_r_07.STL" />
+                      </body>
+                    </body>
+                  </body>
+                </body>
+              </body>
+            </body>
+          </body>
+          <body name="Link_arm_l_01" pos="0.004 0.1616 0.3922" quat="1.0 0.0 0.0 0.0">
+            <joint name="J_arm_l_01" type="hinge" range="-2.96706 2.96706" axis="0 1 0" />
+            <inertial pos="-0.00449464987882542 0.0382942125981936 -1.874402432607E-06" quat="1.0 0.0 0.0 0.0" mass="0.756406339732892" diaginertia="0.000587115683146372 0.000803052813361661 0.000842985653484675" />
+            <geom name="Link_arm_l_01_collision_0" pos="0 0 0" quat="1.0 0.0 0.0 0.0" type="mesh" mesh="Link_arm_l_01.STL" rgba="0 0 0 0" />
+            <geom name="Link_arm_l_01_visual_0" pos="0 0 0" quat="1.0 0.0 0.0 0.0" material="" type="mesh" mesh="Link_arm_l_01.STL" />
+            <body name="Link_arm_l_02" pos="0.042 0.041 0" quat="1.0 0.0 0.0 0.0">
+              <joint name="J_arm_l_02" type="hinge" range="-1.83260 1.83260" axis="-1 0 0" />
+              <inertial pos="-0.042 0.0674307499121858 1.38777878078145E-17" quat="1.0 0.0 0.0 0.0" mass="0.984999996273518" diaginertia="0.0017309882399251 0.00115401958000568 0.00226269324370836" />
+              <geom name="Link_arm_l_02_collision_0" pos="0 0 0" quat="1.0 0.0 0.0 0.0" type="mesh" mesh="Link_arm_l_02.STL" rgba="0 0 0 0" />
+              <geom name="Link_arm_l_02_visual_0" pos="0 0 0" quat="1.0 0.0 0.0 0.0" material="" type="mesh" mesh="Link_arm_l_02.STL" />
+              <body name="Link_arm_l_03" pos="-0.042 0.1226 0" quat="1.0 0.0 0.0 0.0">
+                <joint name="J_arm_l_03" type="hinge" range="-2.96706 2.96706" axis="0 1 0" />
+                <inertial pos="0.00141357502419956 0.164662742175383 0.0207578924800774" quat="1.0 0.0 0.0 0.0" mass="0.958999855228925" diaginertia="0.00206438134078715 0.000805354129266641 0.00205099914609259" />
+                <geom name="Link_arm_l_03_collision_0" pos="0 0 0" quat="1.0 0.0 0.0 0.0" type="mesh" mesh="Link_arm_l_03.STL" rgba="0 0 0 0" />
+                <geom name="Link_arm_l_03_visual_0" pos="0 0 0" quat="1.0 0.0 0.0 0.0" material="" type="mesh" mesh="Link_arm_l_03.STL" />
+                <body name="Link_arm_l_04" pos="-0.0353 0.1774 0.024" quat="1.0 0.0 0.0 0.0">
+                  <joint name="J_arm_l_04" type="hinge" range="0 2.96706" axis="1 0 0" />
+                  <inertial pos="0.038726985904266 0.0607672244593032 -0.0210032450980798" quat="1.0 0.0 0.0 0.0" mass="0.60000012303258" diaginertia="0.000703976141425558 0.000680850033983237 0.00106526266740194" />
+                  <geom name="Link_arm_l_04_collision_0" pos="0 0 0" quat="1.0 0.0 0.0 0.0" type="mesh" mesh="Link_arm_l_04.STL" rgba="0 0 0 0" />
+                  <geom name="Link_arm_l_04_visual_0" pos="0 0 0" quat="1.0 0.0 0.0 0.0" material="" type="mesh" mesh="Link_arm_l_04.STL" />
+                  <body name="Link_arm_l_05" pos="0.0353 0.1035 -0.024" quat="1.0 0.0 0.0 0.0">
+                    <joint name="J_arm_l_05" type="hinge" range="-2.96706 2.96706" axis="0 1 0" />
+                    <inertial pos="-3.2712E-05 0.068658 -0.00011178" quat="1.0 0.0 0.0 0.0" mass="0.68976" diaginertia="0.0025225 0.0004487 0.0024111" />
+                    <geom name="Link_arm_l_05_collision_0" pos="0 0 0" quat="1.0 0.0 0.0 0.0" type="mesh" mesh="Link_arm_l_05.STL" rgba="0 0 0 0" />
+                    <geom name="Link_arm_l_05_visual_0" pos="0 0 0" quat="1.0 0.0 0.0 0.0" material="" type="mesh" mesh="Link_arm_l_05.STL" />
+                    <body name="Link_arm_l_06" pos="0.0265 0.1965 0" quat="1.0 0.0 0.0 0.0">
+                      <joint name="J_arm_l_06" type="hinge" range="-1.8326 1.8326" axis="-1 0 0" />
+                      <inertial pos="-0.0260776548825596 8.95877202866657E-07 0.00166373234012217" quat="1.0 0.0 0.0 0.0" mass="0.280000012776158" diaginertia="0.000145596926990102 0.000156926535065694 0.000104981940665913" />
+                      <geom name="Link_arm_l_06_collision_0" pos="0 0 0" quat="1.0 0.0 0.0 0.0" type="mesh" mesh="Link_arm_l_06.STL" rgba="0 0 0 0" />
+                      <geom name="Link_arm_l_06_visual_0" pos="0 0 0" quat="1.0 0.0 0.0 0.0" material="" type="mesh" mesh="Link_arm_l_06.STL" />
+                      <body name="Link_arm_l_07" pos="-0.0265 0 0.0318" quat="1.0 0.0 0.0 0.0">
+                        <joint name="J_arm_l_07" type="hinge" range="-1.04720 1.04720" axis="0 0 1" />
+                        <inertial pos="-0.0077872 0.15705 -0.027733" quat="1.0 0.0 0.0 0.0" mass="0.61354" diaginertia="0.0025964 0.0007306 0.00301" />
+                        <geom name="Link_arm_l_07_collision_0" pos="0 0 0" quat="1.0 0.0 0.0 0.0" type="mesh" mesh="Link_arm_l_07.STL" rgba="0 0 0 0" />
+                        <geom name="Link_arm_l_07_visual_0" pos="0 0 0" quat="1.0 0.0 0.0 0.0" material="" type="mesh" mesh="Link_arm_l_07.STL" />
+                      </body>
+                    </body>
+                  </body>
+                </body>
+              </body>
+            </body>
+          </body>
+          <body name="Link_waist_pitch" pos="0 -0.06525 0" quat="1.0 0.0 0.0 0.0">
+            <joint name="J_waist_pitch" type="hinge" range="-0.29671 0.78540" axis="0 -1 0" />
+            <inertial pos="-0.00073496 0.049925 -2.9695E-05" quat="1.0 0.0 0.0 0.0" mass="2.6964" diaginertia="0.0051971 0.0047413 0.0061906" />
+            <geom name="Link_waist_pitch_collision_0" pos="0 0 0" quat="1.0 0.0 0.0 0.0" type="mesh" mesh="Link_waist_pitch.STL" rgba="0 0 0 0" />
+            <geom name="Link_waist_pitch_visual_0" pos="0 0 0" quat="1.0 0.0 0.0 0.0" material="" type="mesh" mesh="Link_waist_pitch.STL" />
+            <body name="Link_waist_roll" pos="-0.064 0.0655 0" quat="1.0 0.0 0.0 0.0">
+              <joint name="J_waist_roll" type="hinge" range="-0.69813 0.69813" axis="1 0 0" />
+              <inertial pos="-0.0037424 -0.001 -0.016856" quat="1.0 0.0 0.0 0.0" mass="2.9806" diaginertia="0.0071327 0.018825 0.016056" />
+              <geom name="Link_waist_roll_collision_0" pos="0 0 0" quat="1.0 0.0 0.0 0.0" type="mesh" mesh="Link_waist_roll.STL" rgba="0 0 0 0" />
+              <geom name="Link_waist_roll_visual_0" pos="0 0 0" quat="1.0 0.0 0.0 0.0" material="" type="mesh" mesh="Link_waist_roll.STL" />
+              <body name="Link_waist_yaw" pos="0.0675 0 -0.098" quat="1.0 0.0 0.0 0.0">
+                <joint name="J_waist_yaw" type="hinge" range="-0.78540 0.78540" axis="0 0 1" />
+                <inertial pos="-0.096172 -0.001 -0.057836" quat="1.0 0.0 0.0 0.0" mass="7.3588" diaginertia="0.091635 0.032766 0.10764" />
+                <geom name="Link_waist_yaw_collision_0" pos="0 0 0" quat="1.0 0.0 0.0 0.0" type="mesh" mesh="Link_waist_yaw.STL" rgba="0 0 0 0" />
+                <geom name="Link_waist_yaw_visual_0" pos="0 0 0" quat="1.0 0.0 0.0 0.0" material="" type="mesh" mesh="Link_waist_yaw.STL" />
+                <body name="Link_hip_r_roll" pos="-0.0875 -0.12 -0.069" quat="1.0 0.0 0.0 0.0">
+                  <joint name="J_hip_r_roll" type="hinge" range="-0.17453 0.43633" axis="1 0 0" />
+                  <inertial pos="0.075725 -0.0010616 0.016591" quat="1.0 0.0 0.0 0.0" mass="2.4334" diaginertia="0.0036961 0.0045067 0.0039063" />
+                  <geom name="Link_hip_r_roll_collision_0" pos="0 0 0" quat="1.0 0.0 0.0 0.0" type="mesh" mesh="Link_hip_r_roll.STL" rgba="0 0 0 0" />
+                  <geom name="Link_hip_r_roll_visual_0" pos="0 0 0" quat="1.0 0.0 0.0 0.0" material="" type="mesh" mesh="Link_hip_r_roll.STL" />
+                  <body name="Link_hip_r_yaw" pos="0.08225 -0.001 -0.01" quat="1.0 0.0 0.0 0.0">
+                    <joint name="J_hip_r_yaw" type="hinge" range="-0.69813 0.69813" axis="0 0 1" />
+                    <inertial pos="-3.0911E-08 -0.0071356 -0.10063" quat="1.0 0.0 0.0 0.0" mass="3.4303" diaginertia="0.0077365 0.0080807 0.006641" />
+                    <geom name="Link_hip_r_yaw_collision_0" pos="0 0 0" quat="1.0 0.0 0.0 0.0" type="mesh" mesh="Link_hip_r_yaw.STL" rgba="0 0 0 0" />
+                    <geom name="Link_hip_r_yaw_visual_0" pos="0 0 0" quat="1.0 0.0 0.0 0.0" material="" type="mesh" mesh="Link_hip_r_yaw.STL" />
+                    <body name="Link_hip_r_pitch" pos="0 0.03675 -0.1055" quat="1.0 0.0 0.0 0.0">
+                      <joint name="J_hip_r_pitch" type="hinge" range="-0.78540 1.83260" axis="0 -1 0" />
+                      <inertial pos="0.0010856 -0.05497 -0.14535" quat="1.0 0.0 0.0 0.0" mass="5.2378" diaginertia="0.043457 0.037801 0.015183" />
+                      <geom name="Link_hip_r_pitch_collision_0" pos="0 0 0" quat="1.0 0.0 0.0 0.0" type="mesh" mesh="Link_hip_r_pitch.STL" rgba="0 0 0 0" />
+                      <geom name="Link_hip_r_pitch_visual_0" pos="0 0 0" quat="1.0 0.0 0.0 0.0" material="" type="mesh" mesh="Link_hip_r_pitch.STL" />
+                      <body name="Link_knee_r_pitch" pos="0 -0.01125 -0.4" quat="1.0 0.0 0.0 0.0">
+                        <joint name="J_knee_r_pitch" type="hinge" range="-2.35619 0.08727" axis="0 -1 0" />
+                        <inertial pos="-0.0096425 2.9338E-06 -0.13601" quat="1.0 0.0 0.0 0.0" mass="2.9775" diaginertia="0.02386 0.024184 0.0023083" />
+                        <geom name="Link_knee_r_pitch_collision_0" pos="0 0 0" quat="1.0 0.0 0.0 0.0" type="mesh" mesh="Link_knee_r_pitch.STL" rgba="0 0 0 0" />
+                        <geom name="Link_knee_r_pitch_visual_0" pos="0 0 0" quat="1.0 0.0 0.0 0.0" material="" type="mesh" mesh="Link_knee_r_pitch.STL" />
+                        <body name="Link_ankle_r_pitch" pos="0 0 -0.387" quat="1.0 0.0 0.0 0.0">
+                          <joint name="J_ankle_r_pitch" type="hinge" range="-0.43633 0.61087" axis="0 -1 0" />
+                          <inertial pos="-6.1835E-12 -1.2655E-07 -2.4682E-08" quat="1.0 0.0 0.0 0.0" mass="0.10145" diaginertia="2.7175e-05 6.1118e-06 2.6565e-05" />
+                          <geom name="Link_ankle_r_pitch_collision_0" pos="0 0 0" quat="1.0 0.0 0.0 0.0" type="mesh" mesh="Link_ankle_r_pitch.STL" rgba="0 0 0 0" />
+                          <geom name="Link_ankle_r_pitch_visual_0" pos="0 0 0" quat="1.0 0.0 0.0 0.0" material="" type="mesh" mesh="Link_ankle_r_pitch.STL" />
+                          <body name="Link_ankle_r_roll" pos="0 0 0" quat="1.0 0.0 0.0 0.0">
+                            <joint name="J_ankle_r_roll" type="hinge" range="-0.43633 0.43633" axis="1 0 0" />
+                            <inertial pos="0.041078 -8.9152E-08 -0.043909" quat="1.0 0.0 0.0 0.0" mass="0.75229" diaginertia="0.0004393 0.0036465 0.0036369" />
+                            <geom name="Link_ankle_r_roll_collision_0" pos="0.05 0 -0.05" quat="1.0 0.0 0.0 0.0" type="box" size="0.125 0.01 0.02" rgba="0 0 0 0" />
+                            <geom name="Link_ankle_r_roll_visual_0" pos="0 0 0" quat="1.0 0.0 0.0 0.0" material="" type="mesh" mesh="Link_ankle_r_roll.STL" />
+                          </body>
+                        </body>
+                      </body>
+                    </body>
+                  </body>
+                </body>
+                <body name="Link_hip_l_roll" pos="-0.0875 0.12 -0.069" quat="1.0 0.0 0.0 0.0">
+                  <joint name="J_hip_l_roll" type="hinge" range="-0.17453 0.43633" axis="1 0 0" />
+                  <inertial pos="0.075725 -0.00093843 0.016591" quat="1.0 0.0 0.0 0.0" mass="2.4334" diaginertia="0.0034464 0.0042569 0.0039063" />
+                  <geom name="Link_hip_l_roll_collision_0" pos="0 0 0" quat="1.0 0.0 0.0 0.0" type="mesh" mesh="Link_hip_l_roll.STL" rgba="0 0 0 0" />
+                  <geom name="Link_hip_l_roll_visual_0" pos="0 0 0" quat="1.0 0.0 0.0 0.0" material="" type="mesh" mesh="Link_hip_l_roll.STL" />
+                  <body name="Link_hip_l_yaw" pos="0.08225 -0.001 -0.01" quat="1.0 0.0 0.0 0.0">
+                    <joint name="J_hip_l_yaw" type="hinge" range="-0.69813 0.69813" axis="0 0 1" />
+                    <inertial pos="-3.1716E-08 0.0071358 -0.10063" quat="1.0 0.0 0.0 0.0" mass="3.4304" diaginertia="0.0077365 0.0080807 0.0066409" />
+                    <geom name="Link_hip_l_yaw_collision_0" pos="0 0 0" quat="1.0 0.0 0.0 0.0" type="mesh" mesh="Link_hip_l_yaw.STL" rgba="0 0 0 0" />
+                    <geom name="Link_hip_l_yaw_visual_0" pos="0 0 0" quat="1.0 0.0 0.0 0.0" material="" type="mesh" mesh="Link_hip_l_yaw.STL" />
+                    <body name="Link_hip_l_pitch" pos="0 -0.03675 -0.1055" quat="1.0 0.0 0.0 0.0">
+                      <joint name="J_hip_l_pitch" type="hinge" range="-0.78540 1.83260" axis="0 -1 0" />
+                      <inertial pos="0.0010856 0.05497 -0.14535" quat="1.0 0.0 0.0 0.0" mass="5.2378" diaginertia="0.043457 0.037801 0.015183" />
+                      <geom name="Link_hip_l_pitch_collision_0" pos="0 0 0" quat="1.0 0.0 0.0 0.0" type="mesh" mesh="Link_hip_l_pitch.STL" rgba="0 0 0 0" />
+                      <geom name="Link_hip_l_pitch_visual_0" pos="0 0 0" quat="1.0 0.0 0.0 0.0" material="" type="mesh" mesh="Link_hip_l_pitch.STL" />
+                      <body name="Link_knee_l_pitch" pos="0 0.01125 -0.4" quat="1.0 0.0 0.0 0.0">
+                        <joint name="J_knee_l_pitch" type="hinge" range="-2.35619 0.08727" axis="0 -1 0" />
+                        <inertial pos="-0.0096425 -2.8684E-06 -0.13601" quat="1.0 0.0 0.0 0.0" mass="2.9775" diaginertia="0.023859 0.024183 0.0023083" />
+                        <geom name="Link_knee_l_pitch_collision_0" pos="0 0 0" quat="1.0 0.0 0.0 0.0" type="mesh" mesh="Link_knee_l_pitch.STL" rgba="0 0 0 0" />
+                        <geom name="Link_knee_l_pitch_visual_0" pos="0 0 0" quat="1.0 0.0 0.0 0.0" material="" type="mesh" mesh="Link_knee_l_pitch.STL" />
+                        <body name="Link_ankle_l_pitch" pos="0 0 -0.387" quat="1.0 0.0 0.0 0.0">
+                          <joint name="J_ankle_l_pitch" type="hinge" range="-0.43644 0.61087" axis="0 -1 0" />
+                          <inertial pos="-6.1835E-12 1.2655E-07 6.7022E-08" quat="1.0 0.0 0.0 0.0" mass="0.10145" diaginertia="2.7175e-05 6.1118e-06 2.6565e-05" />
+                          <geom name="Link_ankle_l_pitch_collision_0" pos="0 0 0" quat="1.0 0.0 0.0 0.0" type="mesh" mesh="Link_ankle_l_pitch.STL" rgba="0 0 0 0" />
+                          <geom name="Link_ankle_l_pitch_visual_0" pos="0 0 0" quat="1.0 0.0 0.0 0.0" material="" type="mesh" mesh="Link_ankle_l_pitch.STL" />
+                          <body name="Link_ankle_l_roll" pos="0 0 0" quat="1.0 0.0 0.0 0.0">
+                            <joint name="J_ankle_l_roll" type="hinge" range="-0.43633 0.43633" axis="1 0 0" />
+                            <inertial pos="0.041077 -2.9318E-08 -0.043909" quat="1.0 0.0 0.0 0.0" mass="0.7522882" diaginertia="0.0004393 0.0036465 0.0036369" />
+                            <geom name="Link_ankle_l_roll_collision_0" pos="0.05 0 -0.05" quat="1.0 0.0 0.0 0.0" type="box" size="0.125 0.01 0.02" rgba="0 0 0 0" />
+                            <geom name="Link_ankle_l_roll_visual_0" pos="0 0 0" quat="1.0 0.0 0.0 0.0" material="" type="mesh" mesh="Link_ankle_l_roll.STL" />
+                          </body>
+                        </body>
+                      </body>
+                    </body>
+                  </body>
+                </body>
+              </body>
+            </body>
+          </body>
+        </body>
+        <body name="imu_link" pos="0 0 0" quat="1.0 0.0 0.0 0.0" />
+      </body>
+    </body>
+  </worldbody>
+
+  <actuator>
+    <position name="J_head_yaw_ctrl" joint="J_head_yaw" forcerange="-26.00000000 26.00000000" forcelimited="true" ctrlrange="-1.5708 1.5708" ctrllimited="true" />
+    <position name="J_head_pitch_ctrl" joint="J_head_pitch" forcerange="-26.00000000 26.00000000" forcelimited="true" ctrlrange="-0.7854 0.7854" ctrllimited="true" />
+    <position name="J_arm_r_01_ctrl" joint="J_arm_r_01" forcerange="-80.00000000 80.00000000" forcelimited="true" ctrlrange="-2.96706 2.96706" ctrllimited="true" />
+    <position name="J_arm_r_02_ctrl" joint="J_arm_r_02" forcerange="-80.00000000 80.00000000" forcelimited="true" ctrlrange="-1.8326 1.8326" ctrllimited="true" />
+    <position name="J_arm_r_03_ctrl" joint="J_arm_r_03" forcerange="-48.00000000 48.00000000" forcelimited="true" ctrlrange="-2.96706 2.96706" ctrllimited="true" />
+    <position name="J_arm_r_04_ctrl" joint="J_arm_r_04" forcerange="-48.00000000 48.00000000" forcelimited="true" ctrlrange="0.0 2.96706" ctrllimited="true" />
+    <position name="J_arm_r_05_ctrl" joint="J_arm_r_05" forcerange="-12.40000000 12.40000000" forcelimited="true" ctrlrange="-2.96706 2.96706" ctrllimited="true" />
+    <position name="J_arm_r_06_ctrl" joint="J_arm_r_06" forcerange="-12.40000000 12.40000000" forcelimited="true" ctrlrange="-1.8326 1.8326" ctrllimited="true" />
+    <position name="J_arm_r_07_ctrl" joint="J_arm_r_07" forcerange="-12.40000000 12.40000000" forcelimited="true" ctrlrange="-1.0472 1.0472" ctrllimited="true" />
+    <position name="J_arm_l_01_ctrl" joint="J_arm_l_01" forcerange="-80.00000000 80.00000000" forcelimited="true" ctrlrange="-2.96706 2.96706" ctrllimited="true" />
+    <position name="J_arm_l_02_ctrl" joint="J_arm_l_02" forcerange="-80.00000000 80.00000000" forcelimited="true" ctrlrange="-1.8326 1.8326" ctrllimited="true" />
+    <position name="J_arm_l_03_ctrl" joint="J_arm_l_03" forcerange="-48.00000000 48.00000000" forcelimited="true" ctrlrange="-2.96706 2.96706" ctrllimited="true" />
+    <position name="J_arm_l_04_ctrl" joint="J_arm_l_04" forcerange="-48.00000000 48.00000000" forcelimited="true" ctrlrange="0.0 2.96706" ctrllimited="true" />
+    <position name="J_arm_l_05_ctrl" joint="J_arm_l_05" forcerange="-12.40000000 12.40000000" forcelimited="true" ctrlrange="-2.96706 2.96706" ctrllimited="true" />
+    <position name="J_arm_l_06_ctrl" joint="J_arm_l_06" forcerange="-12.40000000 12.40000000" forcelimited="true" ctrlrange="-1.8326 1.8326" ctrllimited="true" />
+    <position name="J_arm_l_07_ctrl" joint="J_arm_l_07" forcerange="-12.40000000 12.40000000" forcelimited="true" ctrlrange="-1.0472 1.0472" ctrllimited="true" />
+    <position name="J_waist_pitch_ctrl" joint="J_waist_pitch" forcerange="-315.00000000 315.00000000" forcelimited="true" ctrlrange="-0.29671 0.7854" ctrllimited="true" />
+    <position name="J_waist_roll_ctrl" joint="J_waist_roll" forcerange="-315.00000000 315.00000000" forcelimited="true" ctrlrange="-0.69813 0.69813" ctrllimited="true" />
+    <position name="J_waist_yaw_ctrl" joint="J_waist_yaw" forcerange="-121.00000000 121.00000000" forcelimited="true" ctrlrange="-0.7854 0.7854" ctrllimited="true" />
+    <position name="J_hip_r_roll_ctrl" joint="J_hip_r_roll" forcerange="-320.00000000 320.00000000" forcelimited="true" ctrlrange="-0.17453 0.43633" ctrllimited="true" />
+    <position name="J_hip_r_yaw_ctrl" joint="J_hip_r_yaw" forcerange="-160.00000000 160.00000000" forcelimited="true" ctrlrange="-0.69813 0.69813" ctrllimited="true" />
+    <position name="J_hip_r_pitch_ctrl" joint="J_hip_r_pitch" forcerange="-396.00000000 396.00000000" forcelimited="true" ctrlrange="-0.7854 1.8326" ctrllimited="true" />
+    <position name="J_knee_r_pitch_ctrl" joint="J_knee_r_pitch" forcerange="-396.00000000 396.00000000" forcelimited="true" ctrlrange="-2.35619 0.08727" ctrllimited="true" />
+    <position name="J_ankle_r_pitch_ctrl" joint="J_ankle_r_pitch" forcerange="-58.50000000 58.50000000" forcelimited="true" ctrlrange="-0.43633 0.61087" ctrllimited="true" />
+    <position name="J_ankle_r_roll_ctrl" joint="J_ankle_r_roll" forcerange="-58.50000000 58.50000000" forcelimited="true" ctrlrange="-0.43633 0.43633" ctrllimited="true" />
+    <position name="J_hip_l_roll_ctrl" joint="J_hip_l_roll" forcerange="-320.00000000 320.00000000" forcelimited="true" ctrlrange="-0.17453 0.43633" ctrllimited="true" />
+    <position name="J_hip_l_yaw_ctrl" joint="J_hip_l_yaw" forcerange="-160.00000000 160.00000000" forcelimited="true" ctrlrange="-0.69813 0.69813" ctrllimited="true" />
+    <position name="J_hip_l_pitch_ctrl" joint="J_hip_l_pitch" forcerange="-396.00000000 396.00000000" forcelimited="true" ctrlrange="-0.7854 1.8326" ctrllimited="true" />
+    <position name="J_knee_l_pitch_ctrl" joint="J_knee_l_pitch" forcerange="-396.00000000 396.00000000" forcelimited="true" ctrlrange="-2.35619 0.08727" ctrllimited="true" />
+    <position name="J_ankle_l_pitch_ctrl" joint="J_ankle_l_pitch" forcerange="-58.50000000 58.50000000" forcelimited="true" ctrlrange="-0.43644 0.61087" ctrllimited="true" />
+    <position name="J_ankle_l_roll_ctrl" joint="J_ankle_l_roll" forcerange="-58.50000000 58.50000000" forcelimited="true" ctrlrange="-0.43633 0.43633" ctrllimited="true" />
+  </actuator>
+
+  <sensor>
+    <framepos name="base_link_pos" objtype="site" objname="root_site" />
+    <framequat name="base_link_quat" objtype="site" objname="root_site" />
+    <framelinvel name="base_link_vel" objtype="site" objname="root_site" />
+    <frameangvel name="base_link_ang_vel" objtype="site" objname="root_site" />
+  </sensor>
+</mujoco>
